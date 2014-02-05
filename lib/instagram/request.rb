@@ -37,6 +37,7 @@ module Instagram
         end
       end
       puts "response is #{response}"
+      $response = response
       return response if raw
       return response.body if no_response_wrapper
       return Response.create( response.body )
