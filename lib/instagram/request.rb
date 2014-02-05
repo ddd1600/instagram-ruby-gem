@@ -3,6 +3,7 @@ module Instagram
   module Request
     # Perform an HTTP GET request
     def get(path, options={}, raw=false, unformatted=false, no_response_wrapper=false)
+      puts "path is #{path}, options are #{options.to_param}"
       request(:get, path, options, raw, unformatted, no_response_wrapper)
     end
 
@@ -35,6 +36,7 @@ module Instagram
           request.body = options unless options.empty?
         end
       end
+      puts "response is #{response}"
       return response if raw
       return response.body if no_response_wrapper
       return Response.create( response.body )
